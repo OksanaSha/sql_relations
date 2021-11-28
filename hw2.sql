@@ -30,14 +30,9 @@ primary key (musician_id, album_id)
 
 create table if not exists Tracks (
 id serial primary key,
+album_id integer references Albums(id),
 name varchar(40) not null,
 duration_sec integer not null
-);
-
-create table if not exists AlbumTracks (
-album_id integer references Albums(id),
-track_id integer references Tracks(id),
-primary key (album_id, track_id)
 );
 
 create table if not exists Collections (
